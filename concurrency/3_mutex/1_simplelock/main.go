@@ -2,10 +2,12 @@ package main
 
 import (
 	"runtime"
+	"sync"
 )
 
 type EventsStorage struct {
 	events map[string]string
+	sync.Mutex
 }
 
 func NewEventsStorage() *EventsStorage {
@@ -15,12 +17,16 @@ func NewEventsStorage() *EventsStorage {
 }
 
 func (e *EventsStorage) Event(key string) (value string, ok bool) {
+	e.Lock()
+	defer e.Unlock()
 	value, ok = e.events[key]
 	return
 }
 
 func (e *EventsStorage) AddEvent(key, value string) {
+	e.Lock()
 	e.events[key] = value
+	e.Unlock()
 }
 
 func main() {

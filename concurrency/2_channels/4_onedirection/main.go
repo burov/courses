@@ -14,11 +14,12 @@ func main() {
 	ch2 := GetPrinter()
 
 	//panic because you cannot read value from send-only  type of channel
-	//val := <-ch2
+	val := <-ch2
 	for i := 10; i < 20; i++ {
 		ch2 <- i
 	}
-
+	for {
+	}
 }
 
 func GetReciver() <-chan int {
