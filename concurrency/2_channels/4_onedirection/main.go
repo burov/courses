@@ -6,7 +6,7 @@ func main() {
 	ch := GetReciver()
 
 	//panic because you cannot send value to receive-only  type of channel
-	//ch <- 5
+	ch <- 5
 	for d := range ch {
 		fmt.Println(d)
 	}

@@ -9,7 +9,7 @@ func main() {
 	var (
 		wg    = &sync.WaitGroup{}
 		sum   = 0
-		rChan = make(chan int, 100)
+		rChan = make(chan int, 9)
 	)
 
 	digits := getDigits()

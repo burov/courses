@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"runtime"
 	"sync"
 )
@@ -36,6 +37,7 @@ func main() {
 			go func() {
 				for {
 					s.Event("Hello")
+					fmt.Println("get Hello")
 				}
 			}()
 		}
@@ -43,7 +45,11 @@ func main() {
 		go func() {
 			for {
 				s.AddEvent("Hello", "World")
+				fmt.Println("save Hello World")
 			}
 		}()
+	}
+
+	for {
 	}
 }

@@ -1,0 +1,1 @@
+protoc -I $GOPATH/src/github.com/burov/courses/web/03_grpc_hello/service --go_out=plugins=grpc:. service.proto
